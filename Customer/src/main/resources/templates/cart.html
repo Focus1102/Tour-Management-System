@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="https://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{default/layout}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart</title>
+</head>
+<body>
+    <div layout:fragment="main-content">
+        <!-- Start Hero Section -->
+        <div class="hero">
+            <div class="container">
+                <div class="row justify-content-between">
+                    <div class="col-lg-5">
+                        <div class="intro-excerpt">
+                            <h1>Cart</h1>
+                            <p class="mb-4">Your shopping cart items</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End Hero Section -->
+
+        <div class="untree_co-section before-footer-section">
+            <div class="container">
+                <!-- Cart Items Table -->
+                <div class="row mb-5" id="cartContainer">
+                    <div class="col-md-12">
+                        <div class="site-blocks-table">
+                            <table class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th class="product-thumbnail">Image</th>
+                                        <th class="product-name">Product</th>
+                                        <th class="product-price">Price</th>
+                                        <th class="product-quantity">Quantity</th>
+                                        <th class="product-total">Total</th>
+                                        <th class="product-remove">Remove</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="cartItems">
+                                    <!-- Items will be dynamically added here by JavaScript -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Cart Summary -->
+                <div class="row" id="cartSummary">
+                    <div class="col-md-6">
+                        <div class="row mb-5">
+                            <div class="col-md-6 mb-3 mb-md-0">
+                                <button class="btn btn-outline-primary btn-sm btn-block" onclick="window.location.href='/shop'">
+                                    Continue Shopping
+                                </button>
+                            </div>
+                            <div class="col-md-6">
+                                <button class="btn btn-outline-danger btn-sm btn-block" id="clearCartBtn">
+                                    Clear Cart
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 pl-5">
+                        <div class="row justify-content-end">
+                            <div class="col-md-7">
+                                <div class="row">
+                                    <div class="col-md-12 text-right border-bottom mb-5">
+                                        <h3 class="text-black h4 text-uppercase">Cart Totals</h3>
+                                    </div>
+                                </div>
+                                <div class="row mb-5">
+                                    <div class="col-md-6">
+                                        <span class="text-black">Total</span>
+                                    </div>
+                                    <div class="col-md-6 text-right">
+                                        <strong class="text-black cart-total" id="cartTotal">$0.00</strong>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <button class="btn btn-primary btn-lg py-3 btn-block" id="checkoutBtn">
+                                            Proceed To Checkout
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Empty Cart Message -->
+                <div class="row" id="emptyCartMessage" style="display: none;">
+                    <div class="col-md-12 text-center py-5">
+                        <h2>Your cart is empty</h2>
+                        <p>Looks like you haven't added any products to your cart yet.</p>
+                        <a href="/shop" class="btn btn-primary mt-3">Continue Shopping</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Include JavaScript files -->
+    <th:block layout:fragment="scripts">
+        <script th:src="@{/default/js/custom.js}"></script>
+        <script th:src="@{/js/cart.js}"></script>
+    </th:block>
+</body>
+</html>

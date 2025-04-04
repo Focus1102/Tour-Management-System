@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="https://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{admin/layout}">
+<head>
+    <meta charset="UTF-8">
+    <title>Student Form Insert</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <style>
+        .error {
+            color: red;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+<section layout:fragment="main-content">
+    <div class="container">
+        <div class="row">
+            <div class="col-ms-6 col-md-6">
+                <h1>Student Form Insert</h1>
+                <form th:action="@{/admin/students/save}" method="post" th:object="${student}">
+                    <input type="hidden" th:field="*{id}">
+
+                    <!-- Last Name -->
+                    <div class="mb-3">
+                        <label for="last_name" class="form-label">Last Name:</label>
+                        <input type="text" id="last_name" th:field="*{last_name}" class="form-control" />
+                        <span th:if="${#fields.hasErrors('last_name')}" class="error">
+                            <!-- Lỗi 1: Không được để trống (@NotNull) -->
+                            <span th:if="${student.last_name == null || student.last_name.trim().isEmpty()}"
+                                  th:text="'Họ không được để trống'"></span>
+                            <!-- Lỗi 2: Chỉ chứa chữ cái và khoảng trắng (@Pattern) -->
+                            <span th:unless="${student.last_name == null || student.last_name.trim().isEmpty()}"
+                                  th:if="${!student.last_name.matches('^[a-zA-Z ]+$')}"
+                                  th:text="'Họ chỉ được chứa chữ cái và khoảng trắng'"></span>
+                        </span>
+                    </div>
+
+                    <!-- First Name -->
+                    <div class="mb-3">
+                        <label for="first_name" class="form-label">First Name:</label>
+                        <input type="text" id="first_name" th:field="*{first_name}" class="form-control" />
+                        <span th:if="${#fields.hasErrors('first_name')}" class="error">
+                            <!-- Lỗi 1: Không được để trống (@NotNull) -->
+                            <span th:if="${student.first_name == null || student.first_name.trim().isEmpty()}"
+                                  th:text="'Tên không được để trống'"></span>
+                            <!-- Lỗi 2: Chỉ chứa chữ cái và khoảng trắng (@Pattern) -->
+                            <span th:unless="${student.first_name == null || student.first_name.trim().isEmpty()}"
+                                  th:if="${!student.first_name.matches('^[a-zA-Z ]+$')}"
+                                  th:text="'Tên chỉ được chứa chữ cái và khoảng trắng'"></span>
+                        </span>
+                    </div>
+
+                    <!-- Email -->
+                    <div class="mb-3">
+                        <label for="email" class="form-label">E-mail:</label>
+                        <input type="text" id="email" th:field="*{email}" class="form-control" />
+                        <span th:if="${#fields.hasErrors('email')}" class="error">
+                            <!-- Lỗi 1: Không được để trống (@NotNull) -->
+                            <span th:if="${student.email == null || student.email.trim().isEmpty()}"
+                                  th:text="'Email không được để trống'"></span>
+                            <!-- Lỗi 2: Độ dài từ 5 đến 50 ký tự (@Size) -->
+                            <span th:unless="${student.email == null || student.email.trim().isEmpty()}"
+                                  th:if="${student.email.length() < 5 || student.email.length() > 50}"
+                                  th:text="'Email phải có độ dài từ 5 đến 50 ký tự'"></span>
+                            <!-- Lỗi 3: Định dạng email không hợp lệ (@Pattern) -->
+                            <span th:unless="${student.email == null || student.email.trim().isEmpty() || student.email.length() < 5 || student.email.length() > 50}"
+                                  th:if="${!student.email.matches('^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$')}"
+                                  th:text="'Email không đúng định dạng'"></span>
+                        </span>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <div class="mb-3">
+                        <input type="submit" value="Add new student" class="btn btn-success" />
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+</body>
+</html>

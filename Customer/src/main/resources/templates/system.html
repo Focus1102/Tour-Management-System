@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:sec="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:layout="https://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{default/layout}">
+<head>
+    <meta charset="UTF-8">
+    <title>System Management</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div layout:fragment="main-content">
+        <div class="container py-5">
+            <div class="user-info">
+                <!-- System Header -->
+                <div class="system-header">
+                    <h1 class="system-title">
+                        <i class="fas fa-cogs"></i>
+                        System Management
+                    </h1>
+                    <div class="system-actions">
+                        <form th:action="@{/logout}" method="post">
+                            <button type="submit" class="btn-logout">
+                                <i class="fas fa-sign-out-alt me-2"></i>Logout
+                            </button>
+                        </form>
+                        <a th:href="@{/}" class="btn-back">
+                            <i class="fas fa-home me-2"></i>Back Home
+                        </a>
+                    </div>
+                </div>
+
+                <!-- User Information Section -->
+                <div class="system-section">
+                    <div class="system-card">
+                        <div class="card-header bg-primary text-white">
+                            <i class="fas fa-user-circle me-2"></i>User Information
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="system-user-detail">
+                                        <p><strong>Username:</strong> <span sec:authentication="principal.username"></span></p>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="system-user-detail">
+                                        <p><strong>Role:</strong> <span sec:authentication="principal.authorities"></span></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- System Status Section with Equipment Images -->
+                <div class="system-section">
+                    <div class="system-card">
+                        <div class="card-header bg-success text-white">
+                            <i class="fas fa-chart-line me-2"></i>System Status & Equipment
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <div class="system-status-item text-center">
+                                        <img th:src="@{/default/images/balo.png}" alt="Equipment" class="img-fluid mb-3" style="height: 100px; object-fit: contain;">
+                                        <h5>Equipment Status</h5>
+                                        <p class="text-success">Available</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="system-status-item text-center">
+                                        <img th:src="@{/default/images/den_led.png}" alt="Lighting" class="img-fluid mb-3" style="height: 100px; object-fit: contain;">
+                                        <h5>Lighting Systems</h5>
+                                        <p class="text-success">Operational</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="system-status-item text-center">
+                                        <img th:src="@{/default/images/bo_sinh_ton.png}" alt="Safety" class="img-fluid mb-3" style="height: 100px; object-fit: contain;">
+                                        <h5>Safety Systems</h5>
+                                        <p class="text-success">Active</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="system-status-item text-center">
+                                        <img th:src="@{/default/images/bo_loc_nuoc.png}" alt="Maintenance" class="img-fluid mb-3" style="height: 100px; object-fit: contain;">
+                                        <h5>Maintenance</h5>
+                                        <p class="text-success">Up to Date</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quick Actions Section with Camping Equipment -->
+                <div class="system-section">
+                    <div class="system-card">
+                        <div class="card-header bg-info text-white">
+                            <i class="fas fa-bolt me-2"></i>Quick Actions & Equipment Management
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-3 mb-3">
+                                    <a href="#" class="system-action-card">
+                                        <img th:src="@{/default/images/trai_4ng.png}" alt="Tents" class="img-fluid mb-2" style="height: 120px; object-fit: contain;">
+                                        <h6>Manage Tents</h6>
+                                    </a>
+                                </div>
+                                <div class="col-md-3 mb-3">
+                                    <a href="#" class="system-action-card">
+                                        <img th:src="@{/default/images/bep_ga.png}" alt="Cooking" class="img-fluid mb-2" style="height: 120px; object-fit: contain;">
+                                        <h6>Cooking Equipment</h6>
+                                    </a>
+                                </div>
+                                <div class="col-md-3 mb-3">
+                                    <a href="#" class="system-action-card">
+                                        <img th:src="@{/default/images/gay_leo_nui.png}" alt="Hiking" class="img-fluid mb-2" style="height: 120px; object-fit: contain;">
+                                        <h6>Hiking Gear</h6>
+                                    </a>
+                                </div>
+                                <div class="col-md-3 mb-3">
+                                    <a href="#" class="system-action-card">
+                                        <img th:src="@{/default/images/den_sac_duoc.png}" alt="Lighting" class="img-fluid mb-2" style="height: 120px; object-fit: contain;">
+                                        <h6>Lighting Equipment</h6>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

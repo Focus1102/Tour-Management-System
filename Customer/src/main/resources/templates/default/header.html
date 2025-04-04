@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Header</title>
+</head>
+<body>
+
+<!-- Start Header/Navigation -->
+<nav class="site-header">
+    <div class="container">
+        <div class="header-wrapper">
+            <div class="logo-wrapper">
+                <a class="logo" th:href="@{/}">
+                    <img th:src="@{/default/images/3735564-103.png}" alt="Logo">
+                </a>
+            </div>
+
+            <ul class="main-nav">
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/}">HOME</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/shop}">PRODUCT</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/service}">PROMO</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/about-us}">ABOUT</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/contact-us}">CONTACT</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/system}">SYSTEM</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/home}">
+                        <i class="fas fa-user"></i> ACCOUNT
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link cart-link" th:href="@{/cart}">
+                        <i class="fas fa-shopping-cart"></i> CART
+                        <span class="cart-badge">0</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<!-- End Header/Navigation -->
+
+</body>
+</html>

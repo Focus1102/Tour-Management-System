@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="https://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{default/layout}">
+<head>
+    <meta charset="UTF-8">
+    <title>Tour Guide Services</title>
+</head>
+<body>
+<div layout:fragment="main-content">
+    <!-- Tour Guide Hero Section -->
+    <div class="tour-guide-hero">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <div class="tour-guide-content">
+                        <h1>TOUR GUIDE</h1>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vivamus lacinia odio vitae vestibulum.</p>
+                        <a href="#" class="btn btn-order">GET DISCOUNT</a>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="tour-guide-image">
+                        <img th:src="@{default/images/3735564-62.png}" class="img-fluid" alt="Tour Guide">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Guide Introduction Section -->
+    <div class="guide-intro-section">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <div class="guide-image">
+                        <img th:src="@{default/images/3735564-81.png}" class="img-fluid" alt="Guide">
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="guide-content">
+                        <p class="guide-text">If you are a culinary fan, if you like to spend time in your kitchen, you likely find yourself looking for reliable resources through which you can</p>
+                        <h3 class="guide-name">Phoebe Frazier</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Subscribe Section -->
+    <div class="subscribe-section">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-6 text-center">
+                    <h2>SUBSCRIBE</h2>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vivamus lacinia odio vitae vestibulum vestibulum.</p>
+                    <form class="subscribe-form">
+                        <div class="input-group">
+                            <input type="email" class="form-control" placeholder="Your Email">
+                            <button class="btn btn-subscribe" type="submit">SUBSCRIBE</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!-- Decorative Icons -->
+        <img th:src="@{default/images/3735564-89.png}" class="icon-decoration icon-boot" alt="Boot icon">
+        <img th:src="@{default/images/3735564-90.png}" class="icon-decoration icon-compass" alt="Compass icon">
+        <img th:src="@{default/images/3735564-86.png}" class="icon-decoration icon-map" alt="Map icon">
+    </div>
+</div>
+</body>
+</html>
